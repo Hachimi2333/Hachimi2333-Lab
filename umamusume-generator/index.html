@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ウマ娘ジェネレーター</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
+  <!-- MDUI CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+</head>
+
+<body>
+  <!--
+            Are you interesting this generator?
+            or Do you have any questions?
+
+            Visit here:
+                https://github.com/CyberRex0/umamusume-generator/
+        -->
+  <div class="mdui-appbar">
+    <div class="mdui-toolbar mdui-color-indigo">
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+      <a href="javascript:;" class="mdui-typo-title">ウマ娘生成器</a>
+    </div>
+    <div class="container">
+      <h1>ウマ娘ジェネレーター</h1>
+      <br>
+      <canvas id="surface" width="1080" height="635"></canvas>
+      <br>
+      头像: <input class="form-input" type="file" id="icon"
+        accept="image/png,image/jpeg,image/jpg,image/bmp,image/webp"><br>
+      姓名：<input class="form-input" type="text" id="name" placeholder="ここに名前を入力" value="ここに名前を入力"><br>
+      标语: <input class="form-input" type="text" id="catchcopy" placeholder="ここにキャッチコピーを入力" value="ここにキャッチコピーを入力"><br>
+      称号: <input class="form-input" type="text" id="tag" placeholder="ここに称号を入力" value="ここに称号を入力"><br>
+      评级: <select class="tekiseiinput mdui-select" id="chara_rank">
+        <option value="UG">UG</option>
+        <option value="SS_PLUS">SS+</option>
+        <option value="SS">SS</option>
+        <option value="S_PLUS">S+</option>
+        <option value="S">S</option>
+        <option value="A_PLUS">A+</option>
+        <option value="A" selected>A</option>
+        <option value="B_PLUS">B+</option>
+        <option value="B">B</option>
+        <option value="C_PLUS">C+</option>
+        <option value="C">C</option>
+        <option value="D_PLUS">D+</option>
+        <option value="D">D</option>
+        <option value="E_PLUS">E+</option>
+        <option value="E">E</option>
+        <option value="F_PLUS">F+</option>
+        <option value="F">F</option>
+        <option value="G_PLUS">G+</option>
+        <option value="G">G</option>
+      </select>
+      <div id="selectbox">
+        马场适性：
+        草地 <select class="tekiseiinput mdui-select" id="tekisei_siba">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+        沙地 <select class="tekiseiinput mdui-select" id="tekisei_dart">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+        <br>
+        距离适性：
+        短距離 <select class="tekiseiinput mdui-select" id="tekisei_sprint">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+        一哩 <select class="tekiseiinput mdui-select" id="tekisei_mile">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+        中距離 <select class="tekiseiinput mdui-select" id="tekisei_middle">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+        長距離 <select class="tekiseiinput mdui-select" id="tekisei_long">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+        <br>
+        跑法适性：
+        领头 <select class="tekiseiinput mdui-select" id="tekisei_nige">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+        前列 <select class="tekiseiinput mdui-select" id="tekisei_senkou">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+        居中 <select class="tekiseiinput mdui-select" id="tekisei_sasi">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+        后追 <select class="tekiseiinput mdui-select" id="tekisei_oikomi">
+          <option value="S">S</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+        </select>
+      </div>
+      <br>
+      参数:
+      速度 <input style="ime-mode: disabled" class="paraminput numinput" type="number" id="param_speed" min="0" max="1200"
+        maxlength="4" value="100">
+      持久力 <input style="ime-mode: disabled" class="paraminput numinput" type="number" id="param_stamina" min="0"
+        max="1200" maxlength="4" value="100">
+      力量 <input style="ime-mode: disabled" class="paraminput numinput" type="number" id="param_power" min="0" max="1200"
+        maxlength="4" value="100">
+      意志力 <input style="ime-mode: disabled" class="paraminput numinput" type="number" id="param_konjo" min="0" max="1200"
+        maxlength="4" value="100">
+      智力 <input style="ime-mode: disabled" class="paraminput numinput" type="number" id="param_kasikosa" min="0"
+        max="1200" maxlength="4" value="100">
+      <p id="param_warning" style="display: none">注: ステータスが1200以上に設定されている場合、グレードが正しく表示されません。</p>
+      <br>
+      <br>
+      <button class="mdui-btn mdui-color-indigo mdui-ripple" onclick="download()">画像を保存</button>
+
+      <br>
+
+      <br>
+      <p>
+        Umamusume Generator v<span id="app-ver"></span><br>
+        (C)2021-2022 CyberRex<br>
+        MIT License
+      </p>
+      <a href="https://github.com/CyberRex0/umamusume-generator/">Origin GitHub repo</a>
+
+    </div>
+
+    <a style="display:none" href="" id="dwnld"></a>
+
+    <!-- JavaScript Libraries-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <!-- MDUI JavaScript -->
+    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+
+@font-face {
+    font-family: 'Umago';
+    src: url('assets/fonts/umakogoM4web.woff2');
+}
+
+body {
+    font-family: 'Umago';
+}
+
+.numinput {
+    max-width: 64px;
+}
+
+#selectbox {
+    line-height: 2.5;
+}
+
+canvas {
+    width: 90vw;
+}
+
+@media (min-width: 1280px) {
+    canvas {
+        width: 65vw !important;
+    }
+}
